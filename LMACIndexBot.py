@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import pathlib
 import sys
 import logging
 import time
@@ -26,7 +26,8 @@ class Bot:
             self.debugMode = True
 
         loglevel = logging.DEBUG if self.debugMode else logging.INFO
-        logging.basicConfig(filename="LMACIndexBot.log", format='%(levelname)s (%(asctime)s): %(message)s',
+        logPath: str = pathlib.Path(__file__).parent.resolve().joinpath('LMACIndexBot.log')
+        logging.basicConfig(filename=logPath, format='%(levelname)s (%(asctime)s): %(message)s',
                             datefmt='%d-%m-%Y %H:%M:%S', level=loglevel)
         self.logger = logging.getLogger('LMACIndexBot_Log')
 
